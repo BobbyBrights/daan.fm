@@ -1,0 +1,402 @@
+body{
+	background-color:#eee;
+	color:#333;
+	font-family: "GT-Eesti";
+	margin:0;
+	-webkit-font-smoothing:antialiased;
+}
+
+*, * *{
+	box-sizing:border-box;
+}
+
+#wrapper{
+	max-width:860px;
+	margin:0 auto;
+	position: relative;
+	padding:0 20px 30px;
+}
+
+#main-header{
+	padding-top:12px;
+}
+#main-header:after{
+	display:block;
+	content:'';
+	clear:both;
+	border-bottom: 1px solid;
+	padding-bottom:12px;
+	opacity:0.4;
+}
+h1,h2{
+	font-size:18px;
+	display:inline;
+	margin:0;
+}
+
+h2{
+	font-weight:normal;
+	opacity:0.4;
+}
+#select-container{
+	overflow: hidden;
+	/*float:right;*/
+}
+header select{
+	min-width:170px;
+	border:none;
+	background-color:transparent;
+	font-size:18px;
+	font-family: "GT-Eesti";
+	outline:none;
+	padding:0;
+	opacity:0.4;
+}
+
+#mute-button{
+	display:none;
+}
+
+.isTouch #mute-button{
+	display:block;
+	opacity:0;
+	-webkit-transition:opacity 50ms linear;
+	transition:opacity 50ms linear;
+	position: fixed;
+	top:10px;
+	right:10px;
+	width:60px;
+	height:60px;
+	border:none;
+	z-index:100;
+	border-radius:48px;
+	outline:none;
+	box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+}
+
+#mute-button:before{
+	display: block;
+    content: '';
+    width: 20px;
+    height: 24px;
+    margin: 0 auto;
+    border-left: 8px solid;
+    box-sizing: border-box;
+    border-right: 8px solid;
+}
+
+.isTouch #mute-button.isActive{
+	opacity:1;
+	
+}
+
+#content{
+	margin-top:30px;
+}
+
+
+#spotify-btn{
+	background:#333;
+	border:none;
+	color:#fff;
+	font-family: "GT-Eesti";
+	font-size:14px;
+	padding:9px 12px;
+	box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+	display:inline-block;
+	cursor:pointer;
+	outline:none;
+	position: relative;
+	font-weight:bold;
+}
+#spotify-btn:before{
+	background-color:white;
+	display: block;
+	content:'';
+	position: absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	opacity:0;
+	-webkit-transition:opacity 100ms linear;
+	transition: opacity 100ms linear;
+}
+
+#spotify-btn:hover:before{
+	opacity:0.3;
+}
+
+#email-link{
+	display:inline-block;
+	margin-left:5px;
+	font-size:14px;
+}
+
+#email-link a{
+	color:inherit;
+}
+
+h3{
+	font-size:54px;
+	line-height:1em;
+	margin:0 0 12px;
+	/*text-shadow:4px 4px 0 rgba(0,0,0,0.1);*/
+}
+
+#content_tracklist{
+	margin-top:48px;
+}
+
+#content_tracklist:after{
+	clear:both;
+	display: block;
+	content:'';
+}
+
+#content_tracklist ul{
+	margin:0;
+	padding:0;
+	float:left;
+	padding-right:5px;
+	/*margin-left:25px;*/
+	/*width:100% !important;*/
+}
+#content_tracklist ul li{
+	list-style:none;
+	padding:0;
+	margin:0 0 18px;
+	font-size:21px;
+	position: relative;
+	box-sizing:border-box;
+	cursor: crosshair;
+	/*text-shadow: 2px 2px 0 rgba(0,0,0,0.1);*/
+	-webkit-column-break-inside:avoid;
+	   page-break-inside:avoid;
+	        break-inside:avoid;
+}
+
+#content_tracklist ul li:hover{
+	/*text-decoration: underline;*/
+	/*opacity:0.5;*/
+	padding-top:4px;
+	margin-bottom:26px;
+	
+	/*border-left:4px solid;
+	padding-left:6px;
+	margin-left:-10px;*/
+}
+
+#content_tracklist ul li span{
+	display:block;
+}
+
+#content_tracklist .track-artist{
+	font-weight:900;
+	font-size:30px;
+	line-height:1em;
+	
+}
+#content_tracklist .track-name{
+	font-weight:200;
+	font-size:21px;
+}
+#content_tracklist .track-id{
+	font-weight:900;
+	position: absolute;
+	left:-25px;
+	display:none;
+}
+
+@media(min-width:620px){
+	#content_tracklist .track-artist{
+		font-size:30px;
+	}
+	#content_tracklist .track-name{
+		font-size:24px;
+	}	
+}
+
+
+
+
+
+
+
+
+/*BACKGROUND*/
+#background-container{
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:0;
+	overflow: hidden;
+}
+.circle-container{
+	background-color:#fff;
+	position: absolute;
+	border-radius:99999px;
+	background-size:cover;
+	opacity:0.4;
+	-webkit-transition:opacity 1000ms;
+	transition:opacity 1000ms;
+	background-blend-mode:multiply;
+	will-change: opacity;
+	-webkit-filter: contrast(1.1) grayscale(.7) brightness(1.1);
+}
+
+.circle-container.circle-active{
+	opacity:0.9;
+	/*transform:scale(1.02);*/
+	/*-webkit-filter: contrast(1.1) grayscale(0.4) brightness(1.1);*/
+}
+
+.circle-container.circle-active .circle-line{
+	/*display: block;*/
+	-webkit-animation: scaling 4.5s infinite;
+	        animation: scaling 4.5s infinite;
+}
+
+.circle-line{
+	width:5%;
+	height:5%;
+	border:1px solid rgba(255,255,255,0.5);
+	border: 1px solid #70FFBA;
+	/*background:rgba(255,255,255,0.2);*/
+	left:47.5%;
+	top:47.5%;
+	position: absolute;
+	border-radius:9999px;
+	opacity:0;
+}
+
+.circle-container.circle-active .circle-line-1{ -webkit-animation-delay:4s; animation-delay:4s; }
+.circle-container.circle-active .circle-line-2{ -webkit-animation-delay:-4s; animation-delay:-4s; }
+.circle-container.circle-active .circle-line-3{ -webkit-animation-delay:6s; animation-delay:6s; }
+.circle-container.circle-active .circle-line-4{ -webkit-animation-delay:-3s; animation-delay:-3s; }
+.circle-container.circle-active .circle-line-5{ -webkit-animation-delay:2s; animation-delay:2s; }
+.circle-container.circle-active .circle-line-6{ -webkit-animation-delay:-2s; animation-delay:-2s; }
+.circle-container.circle-active .circle-line-7{ -webkit-animation-delay:0; animation-delay:0; }
+
+@-webkit-keyframes scaling{
+	0%{
+		opacity:0;
+		width:5%;
+		height:5%;
+	}
+	10%{
+		opacity:1;
+	}
+	60%{
+		opacity:0;
+	}
+
+	100%{
+		width:100%;
+		height:100%;
+		left:0;
+		top:0;
+	}
+}
+
+@keyframes scaling{
+	0%{
+		opacity:0;
+		width:5%;
+		height:5%;
+	}
+	10%{
+		opacity:1;
+	}
+	60%{
+		opacity:0;
+	}
+
+	100%{
+		width:100%;
+		height:100%;
+		left:0;
+		top:0;
+	}
+}
+
+@media(min-width:740px){
+	#wrapper{
+		padding-bottom:90px;
+	}
+	h3{
+		font-size:90px;
+	}
+
+	#content{
+		margin-top:102px;
+	}
+
+	#content_tracklist ul{
+		width:50%;
+		margin-left:0;
+	}
+
+	#content_tracklist ul li{
+		font-size:16px;
+		margin-bottom:24px;
+		padding-right:30px;
+	}
+
+	#spotify-btn{
+		font-size:18px;
+		padding:12px 24px;
+	}
+	#email-link{
+		font-size:16px;
+		margin-left:10px;
+	}
+
+	#content_tracklist ul{
+		-webkit-column-gap:10px;
+		   -moz-column-gap:10px;
+		        column-gap:10px;
+	}
+
+	#content_tracklist ul li{
+		margin:0 0 30px;
+		font-size:21px;
+	}
+	#select-container{
+		float:right;
+	}
+}
+
+@media(min-width:1180px){
+	#wrapper{
+		max-width:980px;
+	}
+}
+
+
+
+
+
+/* 
+
+TO DO 
+	- clean code ( on audio end events + touch stuff)
+	- get proper backend system
+	- howler
+	- maak maandselector duidelijker
+	
+
+	Done
+	- Month selector
+	- Apply styles
+	- Mobile/viewports
+	- Baseline
+	- Cursor
+	- spotify plaatjes
+*/
+
+
+
+

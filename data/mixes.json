@@ -1,0 +1,40 @@
+[
+	{
+		"month": "September 2016",
+		"id": "september2016",
+		"playlistId": "69XU00ZTTHQYsRfZMVrrFc",
+		"primaryColor": "#005FFF",
+		"secondaryColor": "#AEFFB3",
+		"tertiaryColor":"#003896"
+	},
+	{
+		"month": "October 2016",
+		"id": "october2016",
+		"playlistId": "5uIEuTJy7qZeFzeENhUZ2M",
+		"primaryColor": "#ff7070",
+		"secondaryColor": "#e9ff70",
+		"tertiaryColor":"#616355"
+	},
+	{
+		"month": "November 2016",
+		"id": "november2016",
+		"playlistId": "54A9abfY3RdzfznYbz2Rp5",
+		"primaryColor": "rgb(255, 219, 219)",
+		"secondaryColor": "rgb(90, 121, 208)",
+		"tertiaryColor":"rgb(224, 224, 224)"
+	},{
+		"month": "Best of 2016",
+		"id": "bestof2016",
+		"playlistId": "4ttMjhwHOyLByRd4gCqyPp",
+		"primaryColor": "rgb(255, 60, 60)",
+		"secondaryColor": "rgb(153, 255, 182)",
+		"tertiaryColor":"rgb(77, 146, 97)"
+	},{
+		"month": "January 2017",
+		"id": "january2017",
+		"playlistId": "3qssARqnrdaRLBggCI65c4",
+		"primaryColor": "rgb(86, 80, 77)",
+		"secondaryColor": "rgb(255, 244, 209)",
+		"tertiaryColor":"rgb(86, 80, 77)"
+	}
+]
