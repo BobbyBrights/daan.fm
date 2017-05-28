@@ -36,5 +36,33 @@
 		"primaryColor": "rgb(86, 80, 77)",
 		"secondaryColor": "rgb(255, 244, 209)",
 		"tertiaryColor":"rgb(86, 80, 77)"
+	},{
+		"month": "February 2017",
+		"id": "february2017",
+		"playlistId": "3awYIdQaUjeqnHHEPrPv8e",
+		"primaryColor": "rgb(86, 80, 77)",
+		"secondaryColor": "rgb(255, 244, 209)",
+		"tertiaryColor":"rgb(86, 80, 77)"
+	},{
+		"month": "March 2017",
+		"id": "march2017",
+		"playlistId": "5uNIOMSff2ikV29KMbkaxI",
+		"primaryColor": "rgb(86, 80, 77)",
+		"secondaryColor": "rgb(255, 244, 209)",
+		"tertiaryColor":"rgb(86, 80, 77)"
+	},{
+		"month": "April 2017",
+		"id": "april2017",
+		"playlistId": "5ZidKiTvba4HsWRSCQA7Zn",
+		"primaryColor": "rgb(86, 80, 77)",
+		"secondaryColor": "rgb(255, 244, 209)",
+		"tertiaryColor":"rgb(86, 80, 77)"
+	},{
+		"month": "May 2017",
+		"id": "may2017",
+		"playlistId": "1b9Xqy8Y0XUN8xqh9CLlwe",
+		"primaryColor": "rgb(86, 80, 77)",
+		"secondaryColor": "rgb(255, 244, 209)",
+		"tertiaryColor":"rgb(86, 80, 77)"
 	}
 ]
