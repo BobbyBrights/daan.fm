@@ -1,9 +1,9 @@
 body{
-	background-color:#eee;
-	color:#333;
+	color:#fff;
 	font-family: "GT-Eesti";
 	margin:0;
 	-webkit-font-smoothing:antialiased;
+	transition:background-color 1s, color 1s;
 }
 
 *, * *{
@@ -11,10 +11,8 @@ body{
 }
 
 #wrapper{
-	max-width:860px;
 	margin:0 auto;
 	position: relative;
-	padding:0 20px 30px;
 }
 
 #main-header{
@@ -91,11 +89,30 @@ header select{
 }
 
 #content{
-	margin-top:30px;
 }
 
 
-#spotify-btn{
+
+/* MONTH */
+
+.month{
+	position: relative;
+	min-height:100vh;
+	padding-bottom:100px;
+	padding-top:100px;
+	/*border-bottom:1px solid;*/
+}
+
+.content{
+	max-width:780px;
+	margin:0 auto;
+	position: relative;
+	opacity:0;
+	transition:opacity 1s;
+}
+
+
+.spotify-btn{
 	background:#333;
 	border:none;
 	color:#fff;
@@ -108,6 +125,7 @@ header select{
 	outline:none;
 	position: relative;
 	font-weight:bold;
+	display: none;
 }
 #spotify-btn:before{
 	background-color:white;
@@ -141,11 +159,19 @@ h3{
 	font-size:54px;
 	line-height:1em;
 	margin:0 0 12px;
-	/*text-shadow:4px 4px 0 rgba(0,0,0,0.1);*/
+	position: relative;
+}
+
+h3::after{
+	display: block;
+	content: '';
+	width: 100px;
+	border-bottom: 21px solid;
+	margin-top: 10px;
 }
 
 #content_tracklist{
-	margin-top:48px;
+	margin-top:90px;
 }
 
 #content_tracklist:after{
@@ -159,8 +185,6 @@ h3{
 	padding:0;
 	float:left;
 	padding-right:5px;
-	/*margin-left:25px;*/
-	/*width:100% !important;*/
 }
 #content_tracklist ul li{
 	list-style:none;
@@ -225,7 +249,7 @@ h3{
 
 
 /*BACKGROUND*/
-#background-container{
+.background-container{
 	position: absolute;
 	top:0;
 	left:0;
@@ -331,7 +355,6 @@ h3{
 	}
 
 	#content{
-		margin-top:102px;
 	}
 
 	#content_tracklist ul{
@@ -371,7 +394,7 @@ h3{
 
 @media(min-width:1180px){
 	#wrapper{
-		max-width:980px;
+		/*max-width:980px;*/
 	}
 }
 

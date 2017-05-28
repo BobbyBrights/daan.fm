@@ -129,3 +129,8 @@ function getArtistImages(data){
 	var dataExport = "var data = " + JSON.stringify(data) + ";"
 	fs.writeFileSync('data.js',dataExport)
 }
+
+
+// "primaryColor": "rgb(255, 235, 59)",
+// "secondaryColor": "rgb(251, 63, 114)",
+// "tertiaryColor":"rgb(251, 63, 114)"

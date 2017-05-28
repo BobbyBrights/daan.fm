@@ -14,9 +14,8 @@
     <body>
         <button id="mute-button"></button>
         <audio src=""></audio>
-        <div id="background-container"></div>
         <div id="wrapper">
-            <header id="main-header">
+           <!--  <header id="main-header">
                 <h1>daanfm</h1>
                 <h2>my monthly discoveries</h2>
                 <div id="select-container">
@@ -32,7 +31,7 @@
                         <option value="september2016">September 2016</option>
                     </select>
                 </div>
-            </header>
+            </header> -->
 
             <div id="content"></div>
         </div>
@@ -46,32 +45,34 @@
 
         <!--   TEMPLATINKKK  -->
         <script type="text/template" id="template">
-            <header id="content_header">
-                <h3>{{month}}</h3>
-                <button id="spotify-btn" data-url="{{playlistId}}">Play on Spotify</button>
-                <p id="email-link">Or <a href="#">e-mail the tracklist</a></p>
-            </header>
+            <div class="background-container"></div>
+            <div class="content">
+                <header id="content_header">
+                    <h3>{{month}}</h3>
+                    <a class="spotify-btn" href="https://open.spotify.com/user/ddaan/playlist/{{playlistId}}">Play on spotify</a>
+                </header>
 
-            <section id="content_tracklist">
-            <ul>
-                {{#each firstTracks}}
-                    <li class="track" data-audio="{{track.preview_url}}" data-id="{{track.id}}">
-                        <span class="track-id">{{count}}.</span>
-                        <span class="track-artist">{{track.artists.0.name}}</span>
-                        <span class="track-name">{{track.name}}</span>
-                    </li>
-                {{/each}}
-            </ul>
-            <ul>
-                {{#each secondTracks}}
-                    <li class="track" data-audio="{{track.preview_url}}" data-id="{{track.id}}">
-                        <span class="track-id">{{count}}.</span>
-                        <span class="track-artist">{{track.artists.0.name}}</span>
-                        <span class="track-name">{{track.name}}</span>
-                    </li>
-                {{/each}}
-            </ul>
-            </section>
+                <section id="content_tracklist">
+                <ul>
+                    {{#each firstTracks}}
+                        <li class="track" data-audio="{{track.preview_url}}" data-id="{{track.id}}">
+                            <span class="track-id">{{count}}.</span>
+                            <span class="track-artist">{{track.artists.0.name}}</span>
+                            <span class="track-name">{{track.name}}</span>
+                        </li>
+                    {{/each}}
+                </ul>
+                <ul>
+                    {{#each secondTracks}}
+                        <li class="track" data-audio="{{track.preview_url}}" data-id="{{track.id}}">
+                            <span class="track-id">{{count}}.</span>
+                            <span class="track-artist">{{track.artists.0.name}}</span>
+                            <span class="track-name">{{track.name}}</span>
+                        </li>
+                    {{/each}}
+                </ul>
+                </section>
+            </div>
         </script>
         <!-- ////TEMPLATINK -->
 
