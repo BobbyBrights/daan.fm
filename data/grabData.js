@@ -5,8 +5,8 @@ var app = express();
 var https = require('https')
 
 var authCode = "";
-var clientId = "69eca68bc733412a83d867d10680d52c"
-var clientSecret = "c1247552885340289c8c923441d5b00d"
+var clientId = null;
+var clientSecret = null;
 var redirectUri = "http://localhost:8000/callback"
 var playlistData;
 var tokenExpirationEpoch;
