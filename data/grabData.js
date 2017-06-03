@@ -5,8 +5,8 @@ var app = express();
 var https = require('https')
 
 var authCode = "";
-var clientId = "69eca68bc733412a83d867d10680d52c"
-var clientSecret = "c1247552885340289c8c923441d5b00d"
+var clientId = null;
+var clientSecret = null;
 var redirectUri = "http://localhost:8000/callback"
 var playlistData;
 var tokenExpirationEpoch;
@@ -78,15 +78,19 @@ function refreshToken(){
 function startScraping(playlist){
 	refreshToken();
 
-	console.log('start scraiping')
-
 	var outputData = [];
 	function getPlaylist(count){
 		spotifyApi.getPlaylistTracks('ddaan', playlistData[count].playlistId)
 	  		.then(function(data) {
 	    		playlistData[count].tracks = data.body.items.map(function(track,i){
-	    			track.count = i + 1;
-	    			return track
+	    			console.log(i)
+	    			return {
+	    				count: i + 1,
+	    				artists: track.track.artists,
+	    				name:track.track.name,
+	    				preview_url: track.track.preview_url,
+	    				id: track.track.id
+	    			}
 	    		})
 	    		outputData.push(playlistData[count])
 	    		if(count < playlistData.length-1){
@@ -103,33 +107,31 @@ function startScraping(playlist){
 }
 
 function getArtistImages(data){
-	// console.log('started function')
-	// data.forEach(function(month){
-	// 	month.tracks.forEach(function(track){
-	// 		var url = "https://api.spotify.com/v1/artists/" + track.track.artists[0].id;
-	// 		https.get(url, function(res){
-	// 		    var body = '';
+	function getImage(month,track){
+		if(!data[month]){ 
+			exportData();
+			return; }
+		if(!data[month].tracks[track]){
+			getImage(month + 1, 0);
+			return;
+		}
 
-	// 		    res.on('data', function(chunk){
-	// 		        body += chunk;
-	// 		    });
+		var artist = data[month].tracks[track].artists[0];
+		spotifyApi.getArtist(artist.id).then(function(val){
+			data[month].tracks[track].images = val.body.images;
+			setTimeout(function(){getImage(month,track+1)},50)
+		}).catch(function(err){
+			console.log(err)
+		})
+	}
 
-	// 		    res.on('end', function(){
-	// 		        var bodyData = JSON.parse(body);
-	// 		        console.log(bodyData.images[0].url);
-	// 		    });
-	// 		}).on('error', function(e){
-	// 		      console.log("Got an error: ", e);
-	// 		});
-	// 	})
-	// })
+	getImage(0,0);
 
-
-
-	var dataExport = "var data = " + JSON.stringify(data) + ";"
-	fs.writeFileSync('data.js',dataExport)
+	function exportData(){
+		var dataExport = "var data = " + JSON.stringify(data) + ";"
+		fs.writeFileSync('data.js',dataExport)
+	}
 }
-
 
 // "primaryColor": "rgb(255, 235, 59)",
 // "secondaryColor": "rgb(251, 63, 114)",

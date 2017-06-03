@@ -108,16 +108,11 @@ function Month(data){
 		// this.el.style.color = this.data.secondaryColor;
 		this.el.querySelector('.spotify-btn').style.color = this.data.secondaryColor;
 		this.el.querySelector('.spotify-btn').style.backgroundColor = this.data.tertiaryColor;
-
-		var circleContainers = this.el.querySelectorAll('.circle-line');
-		for(var i=0; i<circleContainers.length;i++){
-			circleContainers[i].style.borderColor = currentMix.primaryColor;
-		}
 	}
 
 	this.hide = function(){
 		this.el.querySelector('.content').style.opacity = 0; 
-		var circleEls = this.el.querySelectorAll('.circle-container');
+		// var circleEls = this.el.querySelectorAll('.circle-container');
 
 		// for(var i = 0; i<circleEls.length; i++){
 		// 	circleEls[i].style.opacity = 0;
@@ -126,8 +121,7 @@ function Month(data){
 
 	this.appear = function(){
 		document.body.style.backgroundColor = this.data.primaryColor;
-
-		// document.body.style.color = this.data.secondaryColor;
+		
 		this.el.style.color = this.data.secondaryColor;
 		this.el.querySelector('.content').style.opacity = 1; 
 	}
@@ -149,9 +143,6 @@ function Month(data){
 document.querySelector('#mute-button').addEventListener('touchend',function(){
 	stopAudio();
 })
-
-
-
 
 function initAudio(){
 	var trackEls = document.querySelectorAll('.track');
@@ -215,9 +206,8 @@ function createCircles(el,data){
 	var windowWidth = window.innerWidth;
 	var windowHeight = backgroundEl.getBoundingClientRect().height;
 	var area = windowWidth * windowHeight;
-	var size = area/8000;
-	if(size < 40){size = 40}else if(size > 120){ size=120 }
-	size = size * (4/amount)
+	var count = data.tracks.length;
+	var size = area/ (2000 * count);
 
 	function calculatePositions(){
 		while(circles.length < amount){
@@ -254,6 +244,7 @@ function createCircles(el,data){
 		}
 
 		if(circles.length < amount){
+			size -= 10;
 			calculatePositions();
 		}
 	}
@@ -261,6 +252,20 @@ function createCircles(el,data){
 	calculatePositions();
 
 	circles.forEach(function(c,i){
+		var image = getRightImage();
+
+		function getRightImage(){
+			if(data.tracks[i].images.length < 2){
+				return data.tracks[i].images[0].url
+			}else{
+				if(windowWidth > 980){
+					return data.tracks[i].images[0].url
+				}else{
+					return data.tracks[i].images[1].url
+				}
+			}
+		}
+
 		var circleEl = document.createElement('div')
 			circleEl.className = "circle-container";
 			circleEl.style.backgroundColor = data.primaryColor;
@@ -269,52 +274,15 @@ function createCircles(el,data){
 			circleEl.style.height = c.rad*2 +"px";
 			circleEl.style.top = c.yPos - c.rad + "px";
 			circleEl.style.left = c.xPos - c.rad + "px";
-			circleEl.id = "track-" + data.tracks[i].track.id;
+			circleEl.id = "track-" + data.tracks[i].id;
 			circleEl.innerHTML = "<div class='circle-line circle-line-7'></div><div class='circle-line circle-line-1'></div><div class='circle-line circle-line-2'></div><div class='circle-line circle-line-3'></div><div class='circle-line circle-line-4'></div><div class='circle-line circle-line-5'></div><div class='circle-line circle-line-6'></div>";
-			
-		function getArtistImage(count){
-			if(data.tracks[i].track.artists.length < count+1){
-				return false
-			}
-			getArtistURL(data.tracks[i].track.artists[count].id,function(r){
-				var request = r.target;
-				
-				if (request.status >= 200 && request.status < 400) {
-					var data = JSON.parse(request.responseText);
-				    var img = null;
-				    
-				    if(data.images.length > 0){
-				    	img = data.images[0].url;
-				    	circleEl.style.backgroundImage = "url(" + img + ")"
-				    }else{
-				    	getArtistImage(count+1)
-				    }
-				    
-				}
-			});
-		}
+			circleEl.style.backgroundImage = "url(" + image + ")"
 
-		getArtistImage(0);
+		var circleContainers = circleEl.querySelectorAll('.circle-line');
+		for(var i=0; i<circleContainers.length;i++){
+			circleContainers[i].style.borderColor = data.primaryColor;
+		}
 			
 		backgroundEl.appendChild(circleEl);
 	})
 }
-
-
-function getArtistURL(id,callback){
-	var request = new XMLHttpRequest();
-	request.open('GET', "https://api.spotify.com/v1/artists/" + id, true);
-	request.onload = callback;
-	request.send();
-}
-
-
-
-
-
-
-
-
-
-
-

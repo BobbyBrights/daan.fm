@@ -55,19 +55,19 @@
                 <section id="content_tracklist">
                 <ul>
                     {{#each firstTracks}}
-                        <li class="track" data-audio="{{track.preview_url}}" data-id="{{track.id}}">
+                        <li class="track" data-audio="{{preview_url}}" data-id="{{id}}">
                             <span class="track-id">{{count}}.</span>
-                            <span class="track-artist">{{track.artists.0.name}}</span>
-                            <span class="track-name">{{track.name}}</span>
+                            <span class="track-artist">{{artists.0.name}}</span>
+                            <span class="track-name">{{name}}</span>
                         </li>
                     {{/each}}
                 </ul>
                 <ul>
                     {{#each secondTracks}}
-                        <li class="track" data-audio="{{track.preview_url}}" data-id="{{track.id}}">
+                        <li class="track" data-audio="{{preview_url}}" data-id="{{id}}">
                             <span class="track-id">{{count}}.</span>
-                            <span class="track-artist">{{track.artists.0.name}}</span>
-                            <span class="track-name">{{track.name}}</span>
+                            <span class="track-artist">{{artists.0.name}}</span>
+                            <span class="track-name">{{name}}</span>
                         </li>
                     {{/each}}
                 </ul>
